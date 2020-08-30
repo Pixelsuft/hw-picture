@@ -1,0 +1,109 @@
+a:1:{s:8:"mainform";a:27:{s:7:"starter";a:1:{s:7:"ontimer";s:198:"if(c("MainForm")->alphaBlendValue>250)
+{
+    c("starter")->enabled=false;
+    c("MainForm")->alphaBlendValue=255;
+    c("MainForm")->alphaBlend=false;
+}
+else c("MainForm")->alphaBlendValue+=3;";}s:5:"mover";a:1:{s:7:"ontimer";s:126:"global $sx, $sy, $fx, $fy;
+c('MainForm')->x = $fx - ($sx - cursor_pos_x());
+c('MainForm')->y = $fy - ($sy - cursor_pos_y());";}s:9:"mainshape";a:2:{s:11:"onmousedown";s:160:"global $sx, $sy, $fx, $fy;
+$sx = cursor_pos_x();
+$sy = cursor_pos_y();
+$fx = c('MainForm')->x;
+$fy = c('MainForm')->y;
+c('MainForm->mover')->enable = true;";s:9:"onmouseup";s:37:"c('MainForm->mover')->enable = false;";}s:9:"leftshape";a:0:{}s:10:"rightshape";a:0:{}s:6:"shape1";a:0:{}s:11:"closebutton";a:1:{s:11:"onmousedown";s:13:"app::close();";}s:10:"closelabel";a:1:{s:7:"onclick";s:13:"app::close();";}s:11:"captiontext";a:2:{s:11:"onmousedown";s:160:"global $sx, $sy, $fx, $fy;
+$sx = cursor_pos_x();
+$sy = cursor_pos_y();
+$fx = c('MainForm')->x;
+$fy = c('MainForm')->y;
+c('MainForm->mover')->enable = true;";s:9:"onmouseup";s:37:"c('MainForm->mover')->enable = false;";}s:2:"bg";N;s:6:"label1";a:2:{s:11:"onmousedown";s:160:"global $sx, $sy, $fx, $fy;
+$sx = cursor_pos_x();
+$sy = cursor_pos_y();
+$fx = c('MainForm')->x;
+$fy = c('MainForm')->y;
+c('MainForm->mover')->enable = true;";s:9:"onmouseup";s:37:"c('MainForm->mover')->enable = false;";}s:6:"label2";a:2:{s:11:"onmousedown";s:160:"global $sx, $sy, $fx, $fy;
+$sx = cursor_pos_x();
+$sy = cursor_pos_y();
+$fx = c('MainForm')->x;
+$fy = c('MainForm')->y;
+c('MainForm->mover')->enable = true;";s:9:"onmouseup";s:37:"c('MainForm->mover')->enable = false;";}s:9:"chromakey";N;s:6:"label3";a:2:{s:11:"onmousedown";s:160:"global $sx, $sy, $fx, $fy;
+$sx = cursor_pos_x();
+$sy = cursor_pos_y();
+$fx = c('MainForm')->x;
+$fy = c('MainForm')->y;
+c('MainForm->mover')->enable = true;";s:9:"onmouseup";s:37:"c('MainForm->mover')->enable = false;";}s:6:"label4";a:2:{s:11:"onmousedown";s:160:"global $sx, $sy, $fx, $fy;
+$sx = cursor_pos_x();
+$sy = cursor_pos_y();
+$fx = c('MainForm')->x;
+$fy = c('MainForm')->y;
+c('MainForm->mover')->enable = true;";s:9:"onmouseup";s:37:"c('MainForm->mover')->enable = false;";}s:3:"dgh";N;s:3:"dgw";N;s:6:"label5";a:2:{s:11:"onmousedown";s:160:"global $sx, $sy, $fx, $fy;
+$sx = cursor_pos_x();
+$sy = cursor_pos_y();
+$fx = c('MainForm')->x;
+$fy = c('MainForm')->y;
+c('MainForm->mover')->enable = true;";s:9:"onmouseup";s:37:"c('MainForm->mover')->enable = false;";}s:11:"startbutton";a:1:{s:11:"onmousedown";s:1681:"MessageBox("This process is not fast. Click OK, and wait.", "Information!");
+file_delete("level_data.txt");
+$src = imagecreatefrompng("image.png");
+$r=0;
+$g=0;
+$b=0;
+$w_src = imagesx($src);
+$h_src = imagesy($src);
+file_put_contents("level_data.txt","<levelXML>\n<info v=\"1.87\" x=\"121.35\" y=\"67.7\" c=\"11\" f=\"t\" h=\"f\" bg=\"1\" bgc=\"16777215\" e=\"1\"/>\n<groups>\n<g x=\"150\" y=\"50\" r=\"0\" ox=\"-150\" oy=\"-50\" s=\"f\" f=\"t\" o=\"100\" im=\"f\" fr=\"f\">\n",FILE_APPEND);
+for( $h = 1; $h <= $h_src; $h+=c("DGW")->text )
+{
+	for( $w = 1; $w <= $w_src; $w+=c("DGH")->text )
+	{
+		$rgb = imagecolorat( $src, $w, $h );
+		$r = ($rgb >> 16) & 0xFF;
+		$g = ($rgb >> 8) & 0xFF;
+		$b = $rgb & 0xFF;
+		$r=$r*65536;
+		$g=$g*256;
+		$color=$r+$g+$b;
+		if($color == c("ChromaKey")->text){}
+		else {
+			file_put_contents("level_data.txt", "<sh t=\"0\" i=\"f\" p0=\"",FILE_APPEND);
+			file_put_contents("level_data.txt", $w + 3,FILE_APPEND);
+			file_put_contents("level_data.txt", "\" p1=\"",FILE_APPEND);
+			file_put_contents("level_data.txt", $h +3,FILE_APPEND);
+			file_put_contents("level_data.txt", "\" p2=\"",FILE_APPEND);
+            file_put_contents("level_data.txt",c("sizex")->text,FILE_APPEND);
+            file_put_contents("level_data.txt","\" p3=\"",FILE_APPEND);
+            file_put_contents("level_data.txt",c("sizey")->text,FILE_APPEND);
+            file_put_contents("level_data.txt","\" p4=\"0\" p5=\"t\" p6=\"f\" p7=\"1\" p8=\"" . $color . "\" p9=\"-1\" p10=\"100\" p11=\"1\"/>",FILE_APPEND);
+		}
+	}
+}
+file_put_contents("level_data.txt","\n</g>\n</groups>\n</levelXML>",FILE_APPEND);
+MessageBox("Complete!", "Information!");";}s:6:"label6";a:2:{s:11:"onmousedown";s:160:"global $sx, $sy, $fx, $fy;
+$sx = cursor_pos_x();
+$sy = cursor_pos_y();
+$fx = c('MainForm')->x;
+$fy = c('MainForm')->y;
+c('MainForm->mover')->enable = true;";s:9:"onmouseup";s:37:"c('MainForm->mover')->enable = false;";}s:6:"label7";a:2:{s:11:"onmousedown";s:160:"global $sx, $sy, $fx, $fy;
+$sx = cursor_pos_x();
+$sy = cursor_pos_y();
+$fx = c('MainForm')->x;
+$fy = c('MainForm')->y;
+c('MainForm->mover')->enable = true;";s:9:"onmouseup";s:37:"c('MainForm->mover')->enable = false;";}s:6:"label8";a:2:{s:11:"onmousedown";s:160:"global $sx, $sy, $fx, $fy;
+$sx = cursor_pos_x();
+$sy = cursor_pos_y();
+$fx = c('MainForm')->x;
+$fy = c('MainForm')->y;
+c('MainForm->mover')->enable = true;";s:9:"onmouseup";s:37:"c('MainForm->mover')->enable = false;";}s:6:"label9";a:2:{s:11:"onmousedown";s:160:"global $sx, $sy, $fx, $fy;
+$sx = cursor_pos_x();
+$sy = cursor_pos_y();
+$fx = c('MainForm')->x;
+$fy = c('MainForm')->y;
+c('MainForm->mover')->enable = true;";s:9:"onmouseup";s:37:"c('MainForm->mover')->enable = false;";}s:7:"label10";a:2:{s:11:"onmousedown";s:160:"global $sx, $sy, $fx, $fy;
+$sx = cursor_pos_x();
+$sy = cursor_pos_y();
+$fx = c('MainForm')->x;
+$fy = c('MainForm')->y;
+c('MainForm->mover')->enable = true;";s:9:"onmouseup";s:37:"c('MainForm->mover')->enable = false;";}s:7:"label11";a:2:{s:11:"onmousedown";s:160:"global $sx, $sy, $fx, $fy;
+$sx = cursor_pos_x();
+$sy = cursor_pos_y();
+$fx = c('MainForm')->x;
+$fy = c('MainForm')->y;
+c('MainForm->mover')->enable = true;";s:9:"onmouseup";s:37:"c('MainForm->mover')->enable = false;";}s:5:"sizex";N;s:5:"sizey";N;}}

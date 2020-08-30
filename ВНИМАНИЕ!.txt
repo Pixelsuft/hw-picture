@@ -1,0 +1,12 @@
+ВНИМАНИЕ:
+
+Приложение созданное в среде DevelStudio требует установленного 
+дистрибутива "Microsoft Visual C++ 2008 Redistributable Package"
+
+http://www.microsoft.com/download/en/details.aspx?displaylang=en&id=29
+
+//////////////////////////
+
+Проэкт ещё в бэте
+
+//////////////////////////
