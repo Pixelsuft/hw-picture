@@ -11,6 +11,7 @@ $g=0;
 $b=0;
 $w_src = imagesx($src);
 $h_src = imagesy($src);
+echo "<levelXML>\n<info v=\"1.87\" x=\"121.35\" y=\"67.7\" c=\"11\" f=\"t\" h=\"f\" bg=\"1\" bgc=\"16777215\" e=\"1\"/>\n<groups>\n<g x=\"150\" y=\"50\" r=\"0\" ox=\"-150\" oy=\"-50\" s=\"f\" f=\"t\" o=\"100\" im=\"f\" fr=\"f\">";
 for( $h = 1; $h <= $h_src; $h++ )
 { 
 	for( $w = 1; $w <= $w_src; $w++ )
@@ -34,6 +35,7 @@ for( $h = 1; $h <= $h_src; $h++ )
 	}
 	$h++; //downgrader (height/2)
 }
+echo "\n</g>\n</groups>\n</levelXML>";
 ?>
 </body>
 </html>
